@@ -1,34 +1,122 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Backend - Node JS
 
-## Getting Started
+<hr/>
 
-First, run the development server:
+# Imam Group Catalog
 
-```bash
-npm run dev
-# or
-yarn dev
+<hr/>
+
+## Class diagram
+
+```plantuml
+' left to right direction
+skinparam linetype ortho
+
+class User{
+    -intger id
+    -string name
+    -string email
+    -string password
+    -datetime created_at
+    -datetime updated_at
+}
+
+' type: FOOD, NON_FOOD, MIX
+class Category{
+    -integer id
+    -string code
+    -string name
+    -string arabic_name
+    -string hebrew_name
+    -string alternate_name
+    -string parent
+    -integer category_lvl
+    -boolean active
+    -string type
+    -integer importance_value
+    -datetime created_at
+    -datetime updated_at
+}
+
+class Product{
+    -integer id
+    -string code
+    -string name
+    -string display_name
+    -string arabic_name
+    -string hebrew_name
+    -string alternate_name
+    -string barcode
+    -float price
+    -float weight
+    -string weight_unit
+    -integer box_quantity
+    -boolean new
+    -string note
+    -boolean active
+    -string background_color
+    -datetime created_at
+    -datetime updated_at
+}
+
+' type => in_weight (example: 1kg => 20 NIS), in_quantity (example: 3 => 20 NIS), price (example: old_price => new_price)
+class Offer{
+    -integer id
+    -string type
+    -float price
+    -float weight
+    -float quantity
+}
+
+class Offer_Product{
+    -integer id
+    -integer offer_id
+    -integer product_id
+}
+
+class Category_Product{
+    -integer id
+    -integer category_id
+    -integer product_id
+    -datetime created_at
+    -datetime updated_at
+}
+
+class Favorite_Product{
+    -integer id
+    -integer user_id
+    -integer product_id
+}
+
+
+class Product_Image{
+    -integer id
+    -integer product_id
+    -string image
+    -string image_name
+    -datetime created_at
+    -datetime updated_at
+}
+
+class Category_Image{
+    -integer id
+    -integer category_id
+    -string image
+    -string image_name
+    -datetime created_at
+    -datetime updated_at
+}
+
+Category --> Category
+Category_Product --> Category
+Category_Image --> Category
+Category_Product --> Product
+Product_Image --> Product
+Favorite_Product --> Product
+Favorite_Product --> User
+Offer_Product --> Product
+Offer_Product --> Offer
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<hr />
