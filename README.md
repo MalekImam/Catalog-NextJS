@@ -1,4 +1,4 @@
-# Backend - Next JS ( FullStact Framework )
+# Next JS ( FullStact Framework )
 
 <hr/>
 
